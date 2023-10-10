@@ -181,8 +181,8 @@ cartRoutes.post('/checkout', async (req, res) => {
     try {
         const ticket = await ticketService.createTicket(user, totalAmount);
         const userMail = await userService.getByEmail(userEmail);
-
-        req.session.ticket = ticket;
+        
+        req.session.ticket = ticket._id.toString();
 
             const mailOptions = {
                 from: 'Proceso de compra exitoso <martiniozzi103@gmail.com>',
