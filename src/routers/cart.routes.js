@@ -182,7 +182,7 @@ cartRoutes.post('/checkout', async (req, res) => {
         const ticket = await ticketService.createTicket(user, totalAmount);
         const userMail = await userService.getByEmail(userEmail);
 
-        req.session.ticket = ticket.code;
+        req.session.ticket = ticket;
 
             const mailOptions = {
                 from: 'Proceso de compra exitoso <martiniozzi103@gmail.com>',
@@ -192,7 +192,7 @@ cartRoutes.post('/checkout', async (req, res) => {
                   <div style="background-color: rgb(180, 200, 200); padding: 20px;">
                     <h1>Compra de productos</h1>
                     <p>La compra de sus productos fue realizada con exito, le mandamos este mail de aviso para informarle que todo se realizó con exito. <br>
-                    El ticket de compra generado contiene la id: ${ticket.code}. <br>
+                    El ticket de compra generado contiene la id: ${ticket._id}. <br>
                     Los productos comprados son: ${JSON.stringify(productsWithQuantities)}. <br>
                     Ante cualquier duda o inconveniente no dude en contactarnos.</p>
                     <p>Atte: El equipo de "MyShop".</p>
@@ -210,8 +210,8 @@ cartRoutes.post('/checkout', async (req, res) => {
                 res.redirect('/carts');
               });
             } catch (error) {
-                console.log(error);
+                res.status(400).json({error: CustomErrors.createError("Error del ticket", generateTicketError(), 'Get ticket Error', errorsType.TICKET_ERROR)});
         }
-})
+});
 
 export {cartRoutes};

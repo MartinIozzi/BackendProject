@@ -59,31 +59,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const btnCompra = document.querySelectorAll('.btnCompra');
 
-    btnCompra.forEach((btn) => {
-        btn.addEventListener('click', async (e) => {
-            const ticketId = e.target.dataset.ticketId
-            e.preventDefault();
-    
-            try {
-                const response = await fetch(`/api/carts/checkout`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-    
-                if (response.ok) {
-                    swal("Compra realizada", `La compra fue finalizada, el ID del ticket de compra es: ${ticketId}`, "success");
-                    setTimeout(2000);
-                } else {
-                    console.error('Error al eliminar el producto');
+const btnCompra = document.querySelectorAll('.botonCompra');
+
+btnCompra.forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        try {
+            const response = await fetch(`/api/carts/checkout`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            } catch (error) {
-                console.error('Error de red', error);
+            });
+            if (response.ok) {
+                swal("Compra realizada", `La compra fue finalizada. Para ver la informacion revise su correo electronico`, "success");
+                setTimeout(function () {
+                    swal.close();
+                  }, 2000);
+            } else {
+                console.error('Error al eliminar el producto');
             }
-        });
+        } catch (error) {
+            console.error('Error de red', error);
+        }
     });
 });
