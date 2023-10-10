@@ -24,11 +24,18 @@
         <button type="submit" class="col pb-4 pt-2 btn btn-danger" style="height: 25px;">X</button>
       </form>
   {{/each}}
-  </div>
+  <hr>
+  <form class="btnCompra">
+  <button type="click" class="botonCompra btn btn-success col-5">Realizar compra</button>
+  <input type="hidden" id="ticketId" name="ticketId" value="{{ticket}}">
+  </form>
+  <hr>
+</div>
 </body>
   
 	<footer class="bg-white" style="height: 50px; padding-top: 10px; margin-top: 10px;">
 		<a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a>
 	</footer>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="js/carts.js"></script>

@@ -12,6 +12,7 @@ import ProductManager from "../dao/fsManagers/productManager.js";
 import { cartService } from "../dao/dbManagers/cart.service.js";
 import userService from '../dao/dbManagers/user.service.js'
 import AdminDTO from "../dto/adminDto.js";
+import ticketModel from "../models/ticket.model.js";
 
 
 const viewsRoutes = Router();
@@ -65,6 +66,8 @@ viewsRoutes.get('/products', async (req, res) => {
 viewsRoutes.get('/carts', async (req, res) => {
     const { user } = req.session;
     const cartId = user.cart;
+    const ticket = req.session.ticket._id;
+
     try{
         const userCartById = await cartController.getById(cartId)
         const promises = userCartById.products.map(async (product) => {
@@ -78,7 +81,7 @@ viewsRoutes.get('/carts', async (req, res) => {
             };
         });
         const productsInCart = await Promise.all(promises);
-        res.render('carts', { title: 'Carrito', user: user, productsInCart, cartId});
+        res.render('carts', { title: 'Carrito', user: user, productsInCart, cartId, ticket});
     } catch(err){
         res.status(500).json(CustomErrors.createError("Error de renderizado", generateRenderError(), 'Render Error', errorsType.RENDER_ERROR));
     }

@@ -28,7 +28,6 @@ forms.forEach((form) => {
     });
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const forms = document.querySelectorAll('.deleteProduct');
 
@@ -49,6 +48,38 @@ document.addEventListener('DOMContentLoaded', () => {
     
                 if (response.ok) {
                     console.log('Producto eliminado con exito');
+                } else {
+                    console.error('Error al eliminar el producto');
+                }
+            } catch (error) {
+                console.error('Error de red', error);
+            }
+        });
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCompra = document.querySelectorAll('.btnCompra');
+
+    btnCompra.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const ticket = btn.querySelector('[name="ticketId"]').value;
+            console.log(ticket);
+    
+            try {
+                const response = await fetch(`/api/carts/checkout`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+    
+                if (response.ok) {
+                    swal("Compra realizada", `La compra fue finalizada, el ID del ticket de compra es: ${ticket}`, "success");
+                    setTimeout(2000);
                 } else {
                     console.error('Error al eliminar el producto');
                 }
