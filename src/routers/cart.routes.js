@@ -203,9 +203,9 @@ cartRoutes.post('/checkout', async (req, res) => {
               };
               transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
-                  logger.error('Error al enviar el correo electrónico:', error);
+                  req.logger.error('Error al enviar el correo electrónico:', error);
                 } else {
-                  logger.info(`Correo electrónico enviado, ID del mensaje: ${info.messageId}`);
+                  req.logger.info(`Correo electrónico enviado, ID del mensaje: ${info.messageId}`);
                 }
                 res.redirect('/carts');
               });
