@@ -97,9 +97,9 @@ productRouter.delete('/:pid', authorize("Premium"), async (req, res) => {
               };
               transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
-                    logger.error(error);
+                    req.logger.error(error);
                 }
-                logger.info(`Email sent: ` + info)});
+                req.logger.info(`Email sent: ` + info)});
         }
         res.status(200).send(await controller.delete(id))
     } catch (error) {
