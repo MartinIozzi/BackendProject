@@ -66,8 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', async (e) => {
             e.preventDefault();
 
-            const ticketId = btn.querySelector('[name="ticketId"]').value;
-            console.log(ticketId);
+            const ticket = btn.querySelector('[name="ticket"]').value;
     
             try {
                 const response = await fetch(`/api/carts/checkout`, {
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
     
                 if (response.ok) {
-                    swal("Compra realizada", `La compra fue finalizada, el ID del ticket de compra es: ${ticketId}`, "success");
+                    swal("Compra realizada", `La compra fue finalizada, el ID del ticket de compra es: ${ticket}`, "success");
                     setTimeout(2000);
                 } else {
                     console.error('Error al eliminar el producto');
