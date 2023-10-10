@@ -1,0 +1,33 @@
+<div class="container">
+<h2>Lista de productos en tiempo real</h2>
+<div id="formulario">
+    <form action="/api/products" method="post">
+        <input type="text" id="name" name="name" placeholder="Nombre del producto"><br>
+        <input type="text" id="description" name="description" placeholder="Descripción del producto"><br>
+        <input type="number" id="price" name="price" placeholder="Precio del producto"><br>
+        <input type="text" id="code" name="code" placeholder="Código del producto"><br>
+        <input type="number" id="stock" name="stock" placeholder="Stock del producto"><br>
+              <div>
+        <input type="text" id="type" name="type" list="opciones" placeholder="Tipo de producto">
+        <datalist id="opciones">
+          <option value="Componentes de PC">
+          <option value="Celulares">
+        </datalist>
+  </div>
+    <input type="text" id="img" name="img" placeholder="Imagen"><br>
+      <button class="mt-2" type="submit" id="boton">Enviar</button>
+      </form>
+      <br>
+  </div>
+  <div class="row productos" id="products">
+
+    </div>
+    <br>
+</div>
+	<footer class="bg-white" style="height: 50px; padding-top: 10px; margin-top: 10px;">
+		<a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a>
+	</footer>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="js/index.js"></script>

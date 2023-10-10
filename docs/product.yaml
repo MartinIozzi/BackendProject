@@ -1,0 +1,204 @@
+paths:
+  /api/products: 
+    get:
+      summary: Muestra todos los productos.
+      tags:
+      - Products
+      responses:
+        200:
+          description:  Lista de productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Products'
+        404:
+          description: No se logro obtener el producto
+        500:
+          description: Error del servidor
+
+    post:
+      summary: Agregar productos
+      tags:
+        - Products
+      requestBody:
+        description: Agregar un producto
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  price:
+                    type: number
+                  code:
+                    type: string
+                    unique: true
+                  stock:
+                    type: number
+                  type:
+                    type: string
+                  img:
+                    type: string
+                example:
+                  name: "Collar"
+                  description: "Collar para mujer de oro"
+                  price: "50000"
+                  code: "3102390123"
+                  stock: "99"
+                  type: "Articulos"
+                  img: "collar.jpg"
+      responses:
+        200:
+          description: Producto agregado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Products'
+        404:
+          description: No se logró agregar el producto
+        500:
+          description: Error del servidor  
+  /api/products/{pid}:
+    get:
+      summary: Obtener un producto por su ID
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      responses:
+        200:
+          description: Producto actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+        404:
+          description: No se logró actualizar el producto
+        500:
+          description: Error del servidor
+    put:
+      summary: Actualizar un producto por su ID
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      requestBody:
+        description: Actualizar un producto
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                code:
+                  type: string
+                  unique: true
+                stock:
+                  type: number
+                type:
+                  type: string
+                img:
+                  type: string
+              example:
+                name: "Collar"
+                description: "Collar para mujer de oro"
+                price: 50000
+                code: "3102390123"
+                stock: 99
+                type: "Articulos"
+                img: "collar.jpg"
+      responses:
+        200:
+          description: Producto actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+        404:
+          description: No se logró actualizar el producto
+        500:
+          description: Error del servidor
+    delete:
+      summary: Eliminar un producto por su ID
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      responses:
+        200:
+          description: Lista actualizada, producto eliminado
+        404:
+          description: No se logró eliminar el producto
+        500:
+          description: Error del servidor
+
+components:
+  schemas:
+    Products:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id del producto (autogenerado por mongoDB)
+        name:
+          type: string
+          description: Nombre del producto.
+        description:
+          type: string
+          description: Description del producto.
+        price:
+          type: number
+          description: Precio del producto.
+        code:
+          type: string
+          unique: true
+          description: Codigo del producto.
+        stock:
+          type: number
+          description: Stock del producto.
+        type:
+          type: string
+          description: Tipo del producto.
+        img:
+          type: string
+          description: Imagen del producto.
+      example:
+        id: ObjectId("5f8c2r3c8c4e8e1e2b8s1c2b")
+        name: "Collar"
+        description: "Collar para mujer de oro"
+        price: "50000"
+        code: "3102390123"
+        stock: "99"
+        type: "Articulos"
+        img: "collar.jpg"

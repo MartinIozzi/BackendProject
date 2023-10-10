@@ -1,0 +1,19 @@
+<div class="container-login">
+    <h3>{{title}}</h3>
+    <form action='/api/users/resetemail/{{token}}' method='post' class="row g-3" id="reset-form">
+        <div class="col-md-6">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name='password' id="password" autocomplete="new-password">
+        </div>
+        <div class="col-md-6">
+            <label for="confirm-password" class="form-label">Repita contraseña</label>
+            <input type="password" class="form-control" name='confirmPassword' id="confirm-password" autocomplete="new-password">
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-success" id="submit-button">Restablecer contraseña</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/resetPassword.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

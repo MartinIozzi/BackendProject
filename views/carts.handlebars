@@ -1,0 +1,34 @@
+<body>
+  <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Carrito</h2>
+
+<div class="bg-white row">
+  <div class="row">
+    <p class="ms-2 mt-2 col" style="font-weight: bolder;">Producto</p>
+    <p class="ms-5 mt-2 col" style="font-weight: bolder;">Cantidad</p>
+    <p class="ms-5 mt-2 col" style="font-weight: bolder;">Precio por unidad c/u</p>
+    <p class="ms-5 mt-2 col" style="color: red; font-weight: bolder;">Eliminar productos</p>
+  </div>
+  {{#each productsInCart}}
+      <hr>
+      <p class="col ms-2" style="font-family: Verdana, sans-serif; font-size: 15px;">{{this.name}}</p>
+      <form class="col updateQuantityForm">
+          <input class="col" type="number" name="quantity" value="{{this.quantity}}">
+          <input type="hidden" id="productId" name="productId" value="{{this.productId}}">
+          <input type="hidden" id="cartId" name="cartId" value="{{@root.cartId}}">
+          <button class="col btn btn-primary" type="submit">Actualizar Cantidad</button>
+      </form>
+      <p class="col" style="font-family: Verdana, sans-serif; font-size: 15px;">${{this.price}}</p>
+      <form class="col deleteProduct">
+          <input type="hidden" id="productId" name="productId" value="{{this.productId}}">
+          <input type="hidden" id="cartId" name="cartId" value="{{@root.cartId}}">
+        <button type="submit" class="col pb-4 pt-2 btn btn-danger" style="height: 25px;">X</button>
+      </form>
+  {{/each}}
+  </div>
+</body>
+  
+	<footer class="bg-white" style="height: 50px; padding-top: 10px; margin-top: 10px;">
+		<a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a>
+	</footer>
+
+<script src="js/carts.js"></script>

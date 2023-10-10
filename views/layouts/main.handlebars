@@ -1,0 +1,67 @@
+<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel='stylesheet' type='text/css' href='/css/style.css'/>
+		<title>{{title}}</title>
+	</head>
+	<body>
+		{{#unless hideNavbar}}
+		<nav class='navBar navbar-expand-lg bg-secondary-subtle' style="margin-top: 5px;">
+			<div>
+		<img style="max-height: 30px;" class="rounded ms-3" src="https://cdn.discordapp.com/attachments/838312221028909059/1161167387547148328/
+		logo.jpg?ex=65375066&is=6524db66&hm=98f99c8fbde50bd455ce418a5ae989217b9f5fcf2579747b5ffacf14e65a6a79&" alt="MyShop">
+		<p>MyShop</p>
+			</div>
+			<div class='container-fluid' >
+				<a class="navLink" href="/"><li>Inicio</li></a>
+				<a class="navLink" href="/chat"><li>Chat</li></a>
+				<a class="navLink" href="/carts"><li>Carrito</li></a>
+				<a class="navLink" href="/perfil"><li>Perfil</li></a>
+				<a class="navLink" href="/products"><li>Productos</li></a>
+				<button
+					class='navbar-toggler'
+					type='button'
+					data-bs-toggle='collapse'
+					data-bs-target='#navbarSupportedContent'
+					aria-controls='navbarSupportedContent'
+					aria-expanded='false'
+					aria-label='Toggle navigation'
+				>
+					<span class='navbar-toggler-icon'></span>
+				</button>
+				<div
+					class='collapse navbar-collapse'
+					id='navbarSupportedContent'
+				>
+					<ul class='navbar-nav ms-auto mb-2 mb-lg-0'>
+						{{#if user}}
+							<li class='nav-item'>
+									<img
+										src='{{user.img}}'
+										class='img-fluid'
+										style='border-radius: 10px; max-height: 35px; margin-top: 5px;'
+									/> 
+									<p>{{user.first_name}}</p>
+							</li>
+							<li class='nav-item'>
+								<form action='/api/users/logout' method='post'>
+									<button
+										class='btn btn-outline-danger'
+										type='submit'
+										style="margin-left: 15px; margin-top: 15px"
+									>Cerrar Sesión</button>
+								</form>
+							</li>
+						{{/if}}
+					</ul>
+				</div>
+			</div>
+		</nav>
+		{{/unless}}
+		{{{body}}}
+        
+	</body>
+</html>

@@ -1,0 +1,119 @@
+body{
+  background-color: rgb(22, 96, 139);
+}
+
+.cart{
+  width: 100px;
+  height: 40px;
+  background-color: rgb(39, 39, 247);
+  color: rgb(255, 255, 255);
+}
+
+.nameProduct{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.password{
+  margin-left: 10px;
+  text-decoration: none; 
+  color: rgb(39, 90, 230); 
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.navLink{
+  text-decoration: none;
+  color: black;
+  list-style: none;
+  margin-right: 25vh;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.contForm{
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #aaaaaa, #8e9eab);
+    background: linear-gradient(to right, #c8caca, #8e9eab);
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 100vh;
+    height: 490px;    
+    margin-left: -50vh;
+    margin-top: -180px;
+}
+
+.contFormLogin{
+  background: #8e9eab;
+  background: -webkit-linear-gradient(to right, #aaaaaa, #8e9eab);
+  background: linear-gradient(to right, #c8caca, #8e9eab);
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 100vh;
+  height: 420px;    
+  margin-left: -50vh;
+  margin-top: -150px;
+}
+
+.fondo{
+  background: #c2e59c;
+  background: -webkit-linear-gradient(to left, #64b3f4, #c2e59c);
+  background: linear-gradient(to left, #64b3f4, #c2e59c);
+}
+
+.navBar{
+  padding-top: 5px; padding-left: 8px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.list{
+  list-style: none;
+}
+
+.card-custom {
+  overflow: hidden;
+  min-height: 450px;
+  border: 0;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+}
+
+.card-custom-img {
+  height: 200px;
+  min-height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-color: inherit;
+}
+
+.card-custom-img::after {
+  position: absolute;
+  content: '';
+  top: 161px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-top-width: 40px;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 545px;
+  border-left-width: calc(575px - 5vw);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: inherit;
+}
+
+.card-custom-avatar img {
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  position: relative;
+  top: 10px;
+  left: 1.25rem;
+  width: 100px;
+  height: 100px;
+}

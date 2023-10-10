@@ -1,0 +1,30 @@
+<div class="container-chat">
+    <form action='/chat' method='post'>
+        {{#if user}}
+        <div class="mb-3">
+            <h2>Comunidad</h2>
+            <div class="bg-body-secondary p-2 rounded" style="width: 50%">
+            <p class="m-1">Ingrese su email</p>
+            <input type='text' class='form-control' style="width: 50%;" placeholder='example@example.com' aria-label='user' name='user' value='{{this.email}}'/>
+            <div id="emailHelp" class="form-text" style="color: black;">Chatea con todos los usuarios!</div>
+            <input type='text' class='form-control' style="width: 50%;" placeholder='Ingresa un mensaje' aria-label='message' name='message'/>
+            <br>
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            </div>
+        </div>
+        {{/if}}
+    </form>
+
+    <div class='container-mensaje'>
+        <h2 class="Lista">Chat</h2>
+        <div id="List-Message" class="bg-body-secondary p-2 pt-3 rounded">
+            
+        </div>
+    </div>
+</div>
+	<footer class="bg-white" style="height: 50px; padding-top: 10px; margin-top: 10px;">
+		<a class="password" href="/mail{{token}}">Olvidaste tu contraseña? Haz click aquí</a>
+	</footer>
+
+<script src='/socket.io/socket.io.js'></script>
+<script src="/js/chat.js"></script>

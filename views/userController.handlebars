@@ -1,0 +1,22 @@
+{{#if adminPermission}}
+    <h2>{{title}}</h2>
+    <div>
+        {{#each userToAdmin}}
+            <div class="pb-2 mt-3 bg-white border-white" style="width: 18rem;">
+                <p>Nombre: {{first_name}}</p>
+                <p>Email: {{email}}</p>
+                <p>Rol actual: {{rol}}</p>
+                <div>
+                    <button class="btn btn-danger userDelete" data-user-id="{{_id}}">Eliminar usuario</button>
+                    <button class="btn btn-warning changeRol" data-user-id="{{_id}}">Cambiar el rol</button>
+                </div>
+            </div>
+        <br>
+        {{/each}}
+    </div>
+    {{else}}
+    <h2>Solo el administrador tiene acceso a esta pagina</h2>
+{{/if}}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/js/userController.js"></script>
