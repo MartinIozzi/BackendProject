@@ -205,7 +205,7 @@ cartRoutes.post('/checkout', async (req, res) => {
                 if (error) {
                     req.logger.error(error);
                 }
-                req.logger.info(`Email sent: ` + info)});
+                req.logger.info(`Email sent: Message ID: ${info.messageId}`)});
                 res.redirect('/carts');
             } catch (error) {
                 console.log(error);
