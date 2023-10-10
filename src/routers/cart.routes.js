@@ -193,7 +193,7 @@ cartRoutes.post('/checkout', async (req, res) => {
                     <h1>Compra de productos</h1>
                     <p>La compra de sus productos fue realizada con exito, le mandamos este mail de aviso para informarle que todo se realizó con exito. <br>
                     El ticket de compra generado contiene la id: ${ticket._id}. <br>
-                    Los productos comprados son: ${productsWithQuantities}. <br>
+                    Los productos comprados son: ${JSON.stringify(productsWithQuantities)}. <br>
                     Ante cualquier duda o inconveniente no dude en contactarnos.</p>
                     <p>Atte: El equipo de "MyShop".</p>
                     <img style="max-height: 200px;" src="https://i.pinimg.com/originals/6e/79/f4/6e79f4854bd0aba7698b9fda5d7ad8e3.jpg">
