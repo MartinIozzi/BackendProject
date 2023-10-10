@@ -66,7 +66,8 @@ viewsRoutes.get('/products', async (req, res) => {
 viewsRoutes.get('/carts', async (req, res) => {
     const { user } = req.session;
     const cartId = user.cart;
-    const ticket = req.session.ticket._id;
+    const ticket = req.session.ticket;
+    const ticketId = ticket._id;
 
     try{
         const userCartById = await cartController.getById(cartId)
@@ -81,7 +82,7 @@ viewsRoutes.get('/carts', async (req, res) => {
             };
         });
         const productsInCart = await Promise.all(promises);
-        res.render('carts', { title: 'Carrito', user: user, productsInCart, cartId, ticket});
+        res.render('carts', { title: 'Carrito', user: user, productsInCart, cartId, ticketId});
     } catch(err){
         res.status(500).json(CustomErrors.createError("Error de renderizado", generateRenderError(), 'Render Error', errorsType.RENDER_ERROR));
     }
