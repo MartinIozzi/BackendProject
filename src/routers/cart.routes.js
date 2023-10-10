@@ -180,13 +180,13 @@ cartRoutes.post('/checkout', async (req, res) => {
 
     try {
         const ticket = await ticketService.createTicket(user, totalAmount);
-        const userMail = await userService.getByEmail(userEmail);
+        //const userMail = await userService.getByEmail(userEmail);
 
         req.session.ticket = ticket;
 
             const mailOptions = {
                 from: 'Proceso de compra exitoso <martiniozzi103@gmail.com>',
-                to: userMail.email,
+                to: userEmail,
                 subject: 'Compra Realizada',
                 html: `
                   <div style="background-color: rgb(180, 200, 200); padding: 20px;">
