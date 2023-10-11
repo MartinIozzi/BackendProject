@@ -87,7 +87,7 @@ viewsRoutes.get('/carts', async (req, res) => {
     }
 });
 
-viewsRoutes.get('/login', isGuest, (req, res) => {
+viewsRoutes.get('/login', isGuest, async (req, res) => {
     try{
         res.render('login', {title: 'Inicio de sesión', hideNavbar: true});
     }catch(err){
@@ -144,7 +144,7 @@ viewsRoutes.get('/emailsent', (req, res) => {
 viewsRoutes.get('/resetpassword', (req, res) => {
     const { user } = req.session;
     try {
-        res.render('resetpassword', {title: 'Restablecer contraseña', user: user});
+        res.render('resetPassword', {title: 'Restablecer contraseña', user: user, hideNavbar: true});
     } catch (error) {
         res.status(500).json(CustomErrors.createError("Error de renderizado", generateRenderError(), 'Render Error', errorsType.RENDER_ERROR));
     }

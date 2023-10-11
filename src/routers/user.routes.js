@@ -52,7 +52,7 @@ usersRouter.post('/register', passport.authenticate('register') , async (req, re
 
 usersRouter.post('/login', passport.authenticate('login', {failureRedirect: '/login'}), async (req, res) => {
 	try {
-		req.session.user = req.user;
+		req.session.user = req.user
 		res.redirect('/')
 	} catch (error) {
 		res.status(500).json({error: CustomErrors.createError("Error de logueo", generateLoginError(), 'Login Error', errorsType.LOGIN_ERROR)});
