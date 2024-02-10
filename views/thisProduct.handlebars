@@ -1,0 +1,85 @@
+<main>
+<div class="model">
+  <div id="contenedor" class="contenedor">
+    <img class="img-description" src="{{infoProduct.img}}" alt="product-img">
+    <div class="zoom"></div>
+  </div>
+  <div style="margin-left: 2em;">
+<h3>{{infoProduct.name}}</h3>
+<p style="width: 20rem;">{{infoProduct.description}}</p>
+<h5 style="color: green;">${{infoProduct.price}}</h5>
+<p>en 3x ${{infoProduct.splitprice}}</p>
+<a style="text-decoration: none;  width: 10em;" href=""><p style="font-size: 12px; width: 10em;">Ver medios de pago</p></a>
+<p>Stock disponible: {{infoProduct.stock}}</p>
+<p>{{infoProduct.type}}</p>
+
+  <div>
+  <!--{{#if user}}-->
+    <form class="addToCart" action="/api/carts/{{cartId}}/products/{{infoProduct.id}}" method="post">
+      <button class="btn btn-warning">Agregar al carrito</button>
+    </form>
+    <!--
+  {{else}}
+    <form class="log" style="display: none;"></form>
+    <button class="btn btn-warning">Agregar al carrito</button>
+  {{/if}}
+  -->
+  </div>
+
+</div>
+</div>
+
+<div>
+
+</div>
+</main>
+<footer>
+  <div style="color: white;">Contáctanos:</div>
+  <div>
+    <a href="https://www.instagram.com" target="_blank"><img class="logos" src="https://cdn.discordapp.com/attachments/838312221028909059/1167204926921920562/pngegg.png?
+    ex=654d474c&is=653ad24c&hm=6bae1e109a91d42213da9d2187ef7b7a378f8b3c6663f9986d5ac2ee932f3d97&" alt="Logo Instagram"></a>
+    <a href="https://www.linkedin.com/in/martin-iozzi-a273bb26b" target="_blank"><img class="logos" src="https://cdn.discordapp.com/attachments/838312221028909059/1167207228055486555/icons8-linkedin-50.png?
+    ex=654d4970&is=653ad470&hm=e519d20331e6c3ed092e773feb7652ea2def20f4ce19eb36807e5f8b767abba6&" alt="Logo LinkedIn"></a>
+  </div>
+  <p style="color: white;">Email: martiniozzi120@hotmail.com</p>
+  <div>
+    <a style="text-decoration: none; color: white; margin-right: 2em;" href="/info">Terminos y Servicios</a>
+    <a style="text-decoration: none; color: white;" href="/info">Politica y Privacidad</a>
+  </div>
+    <div><a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a></div>
+</footer>
+
+<script>const user = {{user}};</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/js/addToCart.js"></script>
+<!--
+<script>
+        const contenedor = document.querySelector('.contenedor');
+        const zoom = document.querySelector('.zoom');
+        const imagen = document.querySelector('.img-description');
+
+        contenedor.addEventListener('mousemove', function(e) {
+            const rect = contenedor.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const zoomSize = 200; // Tamaño del zoom
+
+            zoom.style.backgroundImage = `url('${imagen.src}')`;
+            zoom.style.display = 'block';
+
+            zoom.style.left = `${x - zoomSize / 2}px`;
+            zoom.style.top = `${y - zoomSize / 2}px`;
+
+            // Calcular posición para mostrar la imagen completa en el área de zoom
+            zoom.style.backgroundSize = `${imagen.width * 2}px ${imagen.height * 2}px`;
+            zoom.style.backgroundPosition = `-${x * 5 - zoomSize}px -${y * 5 - zoomSize}px`;
+        });
+
+        contenedor.addEventListener('mouseleave', function() {
+            zoom.style.display = 'none';
+        });
+<script>
+-->
+

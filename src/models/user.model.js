@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
 	rol: {
 		type: String,
 		enum: ['User', 'Premium', 'Admin'],
-		default: 'User',
+		default: 'Admin',
 	},
 	last_connection: {
 		type: String,

@@ -1,33 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/public/css/style.css">
-</head>
 <body class="fondo"> 
+    <div class="backLogo">
+    <div class="infoTitle">
+      <img class="logo" src="https://cdn.discordapp.com/attachments/838312221028909059/1161167387547148328/
+		logo.jpg?ex=65375066&amp;is=6524db66&amp;hm=98f99c8fbde50bd455ce418a5ae989217b9f5fcf2579747b5ffacf14e65a6a79&amp;" alt="My Shop Logo">
+  <div class="title">My Shop</div>
+  </div>
+  </div>
+    <div class="registro">Registrarse</div>
+    <div class="containerFormRegis">
     <form action="/api/users/register" method="post" style="padding: 1.5rem;" class="border border-primary-subtle border-2 rounded-4 contForm">
-  <div class="form-group">
-    <label>Nombre</label>
+  <div class="form-group row">
+    <label class="label">Nombre</label>
     <input type="text" class="form-control" name="first_name" placeholder="Ingresar Nombre">
-    <label>Apellido</label>
+    <label class="label">Apellido</label>
     <input type="text" class="form-control" name="last_name" placeholder="Ingresar Apellido">
-    <label>Correo electronico</label>
+    <label class="label">Correo electronico</label>
     <input type="email" class="form-control" name="email" placeholder="Ingresar Email">
-
-  </div>
-  <div class="form-group">
-    <label>Contraseña</label>
+    <div class="col">
+    <label class="label">Contraseña</label>
     <input type="password" class="form-control" name="password" placeholder="Contraseña">
-    <label>Edad</label>
+    </div>
+
+    <label class="label">Edad</label>
     <input type="number" class="form-control" name="age" placeholder="Edad">
-    <label>Foto de perfil</label>
+    <label class="label">Foto de perfil</label>
     <input type="text" class="form-control" name="img" placeholder="Imagen">
-    <small class="form-text text-muted">Nunca compartas tus datos con alguien mas.</small>
+    <small class="form-text label">Nunca compartas tus datos con alguien mas.</small>
   </div>
-  <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Enviar</button>
+  <div class="row">
+  <div class="col"><button type="submit" class="btn btn-primary col" style="margin-top: 1rem;">Enviar</button></div>
+  <div class="col">
+  <a href="/login" class="btn btn-success col-12">Ingresar</a>
+  <small class="form-text label">Ya tienes una cuenta? Ingresa</small>
+  </div>
+  </div>
   </div>
     </form>
+  </div>
 </body>
 </html>

@@ -17,7 +17,7 @@ function render(products) {
     }).join(' ');
 
     document.getElementById('products').innerHTML = html;
-}
+};
 
 
 socket.on('send', (products) => {

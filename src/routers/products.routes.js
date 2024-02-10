@@ -10,27 +10,39 @@ import ProductManager from "../dao/fsManagers/productManager.js";
 import { productService } from "../dao/dbManagers/product.service.js";
 import userService from "../dao/dbManagers/user.service.js";
 import userModel from "../models/user.model.js";
+import { productModel } from "../models/products.model.js";
 
-
-const controller = new ProductRepository(productService);
+const prodController = new ProductRepository(productService);
 const productRouter = Router();
+
+productRouter.get('/randomproducts', async (req, res) => {
+    try {
+        const amount = parseInt(req.query.amount) || 4;
+        const randomProducts = await productModel.aggregate([{$sample : {size: amount}}]).exec();
+        
+        res.json(randomProducts)
+    } catch (error) {
+        res.status(500).json({error: CustomErrors.createError("Error de productos", generateProductsError(), 'Show Product Error', errorsType.PRODUCTS_ERROR)});
+    }
+});
 
 productRouter.get('/', async (req, res) => {
     try {
-        const products = await controller.get();
+        const products = await prodController.get();
         res.json(products);
     } catch (error) {
         res.status(500).json({error: CustomErrors.createError("Error de productos", generateProductsError(), 'Show Products Error', errorsType.PRODUCTS_ERROR)});
     }
 });
 
-productRouter.get("/:pid" , async (req, res)=> {
+productRouter.get("/:pid", async (req, res) => {
     const pid = req.params.pid;
+
     try {
-        let products = await controller.getById(pid)
-        res.send(products);
-    } catch (error){
-		res.status(500).json({error: CustomErrors.createError("Error de productos", generateProductsError(), 'Show Product Error', errorsType.PRODUCTS_ERROR)});
+        let product = await prodController.getById(pid);
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error: CustomErrors.createError("Error de productos", generateProductsError(), 'Show Product Error', errorsType.PRODUCTS_ERROR) });
     }
 });
 
@@ -50,10 +62,10 @@ productRouter.post('/', authorize('Premium'), async (req, res) => {
         if (req.user.rol == 'Premium') {
             const product = req.body;
             product.owner = userEmail;
-            await controller.add(product);
+            await prodController.add(product);
         }
         
-        socketServer.emit('send', await controller.get());
+        socketServer.emit('send', await prodController.get());
   } catch (error) {
       res.status(500).json({error: CustomErrors.createError("Error de productos", generateProductsError(), 'Add Product Error', errorsType.PRODUCTS_ERROR)});
     }
@@ -63,7 +75,7 @@ productRouter.put('/:pid', async (req, res) => {
     try{
         const id = req.params.pid;
         const updatedProduct = req.body;
-        const updateProd = await controller.update(id, updatedProduct);
+        const updateProd = await prodController.update(id, updatedProduct);
         res.status(200).json(updateProd);
     } catch (error) {
 		res.status(500).json({error: CustomErrors.createError("Error de productos", generateProductsError(), 'Update Product Error', errorsType.PRODUCTS_ERROR)});
@@ -101,7 +113,7 @@ productRouter.delete('/:pid', authorize("Premium"), async (req, res) => {
                 }
                 req.logger.info(`Email sent: ` + info)});
         }
-        res.status(200).send(await controller.delete(id))
+        res.status(200).send(await prodController.delete(id))
     } catch (error) {
 		res.status(500).json({error: CustomErrors.createError("Error de productos", generateProductsError(), 'Delete Product Error', errorsType.PRODUCTS_ERROR)});
     }

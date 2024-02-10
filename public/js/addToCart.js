@@ -1,5 +1,3 @@
-const socket = io();
-
 const addToCart = document.querySelectorAll('.addToCart');
 
 addToCart.forEach((btnAdd) => {
@@ -10,3 +8,24 @@ addToCart.forEach((btnAdd) => {
         }, 1000);
     });
 });
+/*
+const log = document.querySelectorAll('.log');
+
+log.forEach((btnLog) => {
+    btnLog.addEventListener('click', () => {
+        swal("Error ", "Necesita iniciar sesión para agregar el producto a un carrito", "failed");
+        setTimeout(function(){
+            swal.close();
+        }, 1000);
+    });
+});
+*/
+if (!user) {
+    const addToCartButton = document.querySelector('.btn.btn-warning');
+    addToCartButton.addEventListener('click', () => {
+      swal("Error ", "Necesita iniciar sesión para agregar el producto a un carrito", "failed");
+      setTimeout(function(){
+        swal.close();
+      }, 1000);
+    });
+  }

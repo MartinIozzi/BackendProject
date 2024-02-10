@@ -9,59 +9,58 @@
 	</head>
 	<body>
 		{{#unless hideNavbar}}
-		<nav class='navBar navbar-expand-lg bg-secondary-subtle' style="margin-top: 5px;">
-			<div>
-		<img style="max-height: 30px;" class="rounded ms-3" src="https://cdn.discordapp.com/attachments/838312221028909059/1161167387547148328/
-		logo.jpg?ex=65375066&is=6524db66&hm=98f99c8fbde50bd455ce418a5ae989217b9f5fcf2579747b5ffacf14e65a6a79&" alt="MyShop">
-		<p>MyShop</p>
+	<nav class='navBar backLogo'>
+		<div class="links">
+			<div class="logoNavbar col-1">
+				<a href="/" style="text-decoration: none;">
+				<img style="max-height: 30px;" class="rounded ms-3" src="https://cdn.discordapp.com/attachments/838312221028909059/1161167387547148328/
+				logo.jpg?ex=65375066&is=6524db66&hm=98f99c8fbde50bd455ce418a5ae989217b9f5fcf2579747b5ffacf14e65a6a79&" alt="MyShop">
+				<div style="justify-content: center; align-items: center; color: rgb(255, 255, 255);">MyShop</div>
+				</a>
 			</div>
-			<div class='container-fluid' >
-				<a class="navLink" href="/"><li>Inicio</li></a>
-				<a class="navLink" href="/chat"><li>Chat</li></a>
-				<a class="navLink" href="/carts"><li>Carrito</li></a>
-				<a class="navLink" href="/perfil"><li>Perfil</li></a>
-				<a class="navLink" href="/products"><li>Productos</li></a>
-				<button
-					class='navbar-toggler'
-					type='button'
-					data-bs-toggle='collapse'
-					data-bs-target='#navbarSupportedContent'
-					aria-controls='navbarSupportedContent'
-					aria-expanded='false'
-					aria-label='Toggle navigation'
-				>
-					<span class='navbar-toggler-icon'></span>
-				</button>
-				<div
-					class='collapse navbar-collapse'
-					id='navbarSupportedContent'
-				>
-					<ul class='navbar-nav ms-auto mb-2 mb-lg-0'>
-						{{#if user}}
-							<li class='nav-item'>
-									<img
-										src='{{user.img}}'
-										class='img-fluid'
-										style='border-radius: 10px; max-height: 35px; margin-top: 5px;'
-									/> 
-									<p>{{user.first_name}}</p>
-							</li>
-							<li class='nav-item'>
-								<form action='/api/users/logout' method='post'>
-									<button
-										class='btn btn-outline-danger'
-										type='submit'
-										style="margin-left: 15px; margin-top: 15px"
-									>Cerrar Sesión</button>
-								</form>
-							</li>
-						{{/if}}
-					</ul>
+				<div class="navContainer col-6">
+					<a class="navLink" href="/carts"><li>Carrito</li></a>
+					<a class="navLink" href="/products"><li>Productos</li></a>
+					<a class="navLink" href="/chat"><li>Comunidad</li></a>
 				</div>
-			</div>
-		</nav>
+				<div>
+					<a class="search" href="/search"><img class="icon-search" src="https://cdn.discordapp.com/attachments/838312221028909059/1204391874606006272/icons8-busqueda-50.png?
+					ex=65d49057&is=65c21b57&hm=293e36f4a91e7ef4bf9af1547fd78bd88da46896f738b85fa5376128fc9f2958&" alt="Icon Search"></a>
+				</div>
+
+				<ul class='ms-auto mb-2 mb-lg-0' style="list-style: none;">
+					{{#if user}}
+					<div class="user">
+						<li class='nav-item'>
+							<button style="border: none; background: none;" id="dropdownButton">
+								<img
+									src='{{user.img}}'
+									class='img-fluid'
+									style='border-radius: 10px; max-height: 35px; margin-top: 5px;'
+								/> 
+								<img src="https://cdn.discordapp.com/attachments/838312221028909059/1164460952230576179/32195.png?
+								ex=65434bc5&is=6530d6c5&hm=3348a8de2c06a2e601e14ed127ae9e790611d3f3e126871fb0da60648d5285f6&" alt="flecha-despliegue" style="max-height: 10px; margin-top: 5px; margin-left: 10px;">
+								<p class="name">{{user.first_name}}</p>
+							</button>
+
+							<ul id="userDropdown" class="dropdown-menu">
+								<button class="btn btn-info" style="margin-left: 15px; margin-top: 15px"><a style="text-decoration: none; color: white;" href="/perfil">Perfil</a></button>
+									<form action='/api/users/logout' method='post'>
+									<button class='btn btn-danger' type='submit' style="margin-left: 15px; margin-top: 15px">Cerrar Sesión</button>
+								</form>
+							</ul>
+						</li>
+					</div>
+					{{else}}
+					<button class="btn btn-outline-info me-3"><a style="text-decoration: none; color: white;" href="/login">Iniciar sesión</a></button>
+					{{/if}}
+
+				</ul>
+		</div>
+	</nav>
 		{{/unless}}
 		{{{body}}}
-        
 	</body>
 </html>
+
+<script src="js/main.js"></script>

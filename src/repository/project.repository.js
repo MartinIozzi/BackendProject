@@ -37,6 +37,14 @@ export default class ProductRepository {
         }
     }
 
+    async getActualStock(pid){
+        try {
+            return await this.dao.getProductStock(pid);
+        } catch (error) {
+            logger.error('error al obtener producto por id', error);
+        }
+    }
+
     async add(product){
         try {
             const newProduct = new ProductDTO(product)

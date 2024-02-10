@@ -1,45 +1,57 @@
-<div class="container">
-  		{{#if adminPermission}}
+<main>
+    <div class="containerProds">
+          {{#each products}}
+            <div class="col-3 card card-custom pb-2">
+              <div class="product-img">
+                <img class="custom-img" src={{this.img}} alt={{this.name}}>
+              </div>
+              <div>
+                <h5 class="card-title">{{this.name}}</h5>
+                <p class="card-text" style="color: blue;">${{this.price}}</p>
+                <form class="detalles" action="/product/{{this._id}}" method="get"><button class="btn btn-success">Ver detalles</button></form>
+              </div>
+            </div>
+          {{/each}}
+    </div>
+<div>
+    {{#if adminPermission}}
 			<a href="/userController">
 								<button
 									class='btn btn-outline-info'
 									type='submit'
-									style="margin-left: 15px; margin-bottom: 10px"
+									style="margin-left: 15px; margin-bottom: 10px; margin-top: 10px;"
 								>Controlador de usuarios</button></a>
+      <a href="/mockingproducts">
+                <button
+									class='btn btn-outline-warning'
+									type='submit'
+									style="margin-left: 15px; margin-bottom: 10px; margin-top: 10px;"
+								>Productos mockeados</button></a>
 		{{/if}}
     {{#if userPremium}}
-      <a href="/realtimeproducts">
-    						<button
+			<a href="/realtimeproducts">
+								<button
 									class='btn btn-success'
 									type='submit'
-									style="margin-left: 15px; margin-bottom: 10px"
-								>Agregar productos</button></a>
+									style="margin-left: 15px; margin-bottom: 10px; margin-top: 10px;"
+								>Agregar productos y modificarlos</button></a>
     {{/if}}
-  <div class="titulo"><h3>Lista de productos</h3></div>
-  <div class="row pt-2 ms-2" style="gap: 10px;">
-    {{#each products}}
-        <div class="col-md-3 card card-custom pb-2 bg-white border-white" style="width: 18rem;">
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src={{this.img}} alt={{this.name}} />
-        <div class="card-body" style="overflow-y: auto">
-          <h4 class="card-title">{{this.name}}</h4>
-          <p class="card-text">Descripción: {{this.description}}</p>
-          <p class="card-text">${{this.price}}</p>
-          <p class="card-text">Codigo: {{this.code}}</p>
-          <p class="card-text">Stock: {{this.stock}}</p>
-          <p class="card-text">Tipo: {{this.type}}</p>
-        </div>
-        <div class="card-footer" style="background: inherit; border-color: inherit;">
-          <form class="addToCart" action="/api/carts/{{@root.cartId}}/products/{{this._id}}" method="post"><button class="btn btn-warning">Agregar al carrito</button></form>
-        </div>
-    </div>
-  </div>
-{{/each}}
 </div>
-	<footer class="bg-white" style="height: 50px; padding-top: 10px; margin-top: 10px;">
-		<a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a>
-	</footer>
+</main>
+<footer>
+  <div style="color: white;">Contáctanos:</div>
+  <div>
+    <a href="https://www.instagram.com" target="_blank"><img class="logos" src="https://cdn.discordapp.com/attachments/838312221028909059/1167204926921920562/pngegg.png?
+    ex=654d474c&is=653ad24c&hm=6bae1e109a91d42213da9d2187ef7b7a378f8b3c6663f9986d5ac2ee932f3d97&" alt="Logo Instagram"></a>
+    <a href="https://www.linkedin.com/in/martin-iozzi-a273bb26b" target="_blank"><img class="logos" src="https://cdn.discordapp.com/attachments/838312221028909059/1167207228055486555/icons8-linkedin-50.png?
+    ex=654d4970&is=653ad470&hm=e519d20331e6c3ed092e773feb7652ea2def20f4ce19eb36807e5f8b767abba6&" alt="Logo LinkedIn"></a>
+  </div>
+  <p style="color: white;">Email: martiniozzi120@hotmail.com</p>
+  <div>
+    <a style="text-decoration: none; color: white; margin-right: 2em;" href="/info">Terminos y Servicios</a>
+    <a style="text-decoration: none; color: white;" href="/info">Politica y Privacidad</a>
+  </div>
+    <div><a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a></div>
+</footer>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="js/addToCart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

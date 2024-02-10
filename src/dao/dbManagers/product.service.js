@@ -1,5 +1,4 @@
 import { productModel } from '../../models/products.model.js';
-import mongoose from 'mongoose';
 import logger from "../../middlewares/logger.middleware.js";
 
 
@@ -49,9 +48,21 @@ class ProductService {
         }
           return product.name;
         } catch (error) {
-            logger.error('error al obtener producto por nombre', error);
+            logger.error('error al obtener el nombre del producto', error);
         }
       }
+
+    async getProductStock(productId){
+        try {
+            const product = await this.model.findById(productId);
+            if (!product) {
+                throw new Error(`Producto con ID ${productId} no encontrado`);
+            }
+              return product.stock;
+        } catch (error) {
+            logger.error('error al obtener el stock del producto', error);
+        }
+    }
 
     async getProductPrice(productId) {
         try {
@@ -67,7 +78,6 @@ class ProductService {
 
     async updateProduct(id, data) {
         try {
-            console.log(id);
             let product = await this.model.findById(id);
             
             if(!product){

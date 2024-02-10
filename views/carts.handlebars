@@ -1,5 +1,5 @@
-<body>
-  <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Carrito</h2>
+<main>
+  <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="text">Carrito</h2>
 
 <div class="bg-white row">
   <div class="row">
@@ -21,7 +21,10 @@
       <form class="col deleteProduct">
           <input type="hidden" id="productId" name="productId" value="{{this.productId}}">
           <input type="hidden" id="cartId" name="cartId" value="{{@root.cartId}}">
-        <button type="submit" class="col pb-4 pt-2 btn btn-danger" style="height: 25px;">X</button>
+          <!--
+        <button type="submit" class="col pb-4 pt-2 btn btn-danger" style="height: 25px;"></button>
+-->
+  <button type="submit" class="btn-close" aria-label="Close"></button>
       </form>
   {{/each}}
   <hr>
@@ -30,11 +33,23 @@
   </form>
   <hr>
 </div>
-</body>
+</main>
+<footer>
+  <div style="color: white;">Contáctanos:</div>
+  <div>
+    <a href="https://www.instagram.com/martin.iozzi"><img class="logos" src="https://cdn.discordapp.com/attachments/838312221028909059/1167204926921920562/pngegg.png?
+    ex=654d474c&is=653ad24c&hm=6bae1e109a91d42213da9d2187ef7b7a378f8b3c6663f9986d5ac2ee932f3d97&" alt="Logo Instagram"></a>
+    <a href="https://www.linkedin.com/in/martin-iozzi-a273bb26b"><img class="logos" src="https://cdn.discordapp.com/attachments/838312221028909059/1167207228055486555/icons8-linkedin-50.png?
+    ex=654d4970&is=653ad470&hm=e519d20331e6c3ed092e773feb7652ea2def20f4ce19eb36807e5f8b767abba6&" alt="Logo LinkedIn"></a>
+  </div>
+  <p style="color: white;">Email: martiniozzi120@hotmail.com</p>
+  <div>
+    <a style="text-decoration: none; color: white; margin-right: 2em;" href="/info">Terminos y Servicios</a>
+    <a style="text-decoration: none; color: white;" href="/info">Politica y Privacidad</a>
+  </div>
+    <div><a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a></div>
+</footer>
   
-	<footer class="bg-white" style="height: 50px; padding-top: 10px; margin-top: 10px;">
-		<a class="password" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</a>
-	</footer>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="js/carts.js"></script>

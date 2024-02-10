@@ -1,5 +1,5 @@
 <div class="container">
-<h2>Lista de productos en tiempo real</h2>
+<h2 class="text">Lista de productos en tiempo real</h2>
 <div id="formulario">
     <form action="/api/products" method="post">
         <input type="text" id="name" name="name" placeholder="Nombre del producto"><br>
@@ -7,13 +7,13 @@
         <input type="number" id="price" name="price" placeholder="Precio del producto"><br>
         <input type="text" id="code" name="code" placeholder="Código del producto"><br>
         <input type="number" id="stock" name="stock" placeholder="Stock del producto"><br>
-              <div>
+      <div>
         <input type="text" id="type" name="type" list="opciones" placeholder="Tipo de producto">
         <datalist id="opciones">
           <option value="Componentes de PC">
           <option value="Celulares">
         </datalist>
-  </div>
+      </div>
     <input type="text" id="img" name="img" placeholder="Imagen"><br>
       <button class="mt-2" type="submit" id="boton">Enviar</button>
       </form>
@@ -30,4 +30,4 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="js/index.js"></script>
+<script src="js/realtimeproducts.js"></script>

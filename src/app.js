@@ -62,8 +62,6 @@ import logger from "./middlewares/logger.middleware.js";
 import { loggerMiddleware } from "./middlewares/logger.middleware.js";
 import userService from "./dao/dbManagers/user.service.js";
 
-
-
 //Config de Swagger
 const swaggerOptions = {
   swaggerDefinition: {
@@ -85,22 +83,6 @@ app.use('/api/session', sessionsRoutes);
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRoutes);
 app.use('/api/users', usersRouter);
-
-app.post('/chat', async (req, res) => {
-  try {
-    const { user, message } = req.body;
-    const newMessage = new chatModel({ user, message });
-    await newMessage.save();
-      
-    const messages = await chatModel.find().lean();
-    socketServer.emit('List-Message', messages)   //socketServer definido linea 93
-
-    res.redirect('/chat')
-  } catch (err) {
-    req.logger.error('Error al iniciar el chat');
-    res.status(500).send(err)
-  }
-});
 
 app.get('/loggerTest', (req, res) => {
   try {

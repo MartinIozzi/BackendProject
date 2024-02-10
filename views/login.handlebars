@@ -1,28 +1,37 @@
 <body class="fondo">
-    <form action="/api/users/login" method="post" style="padding: 1.5rem;" class="border border-primary-subtle border-2 rounded-4 contFormLogin">
-  <div class="form-group">
-    <label>Correo electronico</label>
-    <input type="email" class="form-control" name="email" placeholder="Ingresar Email">
+  <div style="cursor: default;">
+    <a href="/" style="text-decoration: none;"><div class="infoTitle">
+      <img class="logo" src="https://cdn.discordapp.com/attachments/838312221028909059/1161167387547148328/
+		logo.jpg?ex=65375066&amp;is=6524db66&amp;hm=98f99c8fbde50bd455ce418a5ae989217b9f5fcf2579747b5ffacf14e65a6a79&amp;" alt="My Shop Logo">
+    <div class="title">My Shop</div>
+    </div></a>
   </div>
-  <div class="form-group">
-    <label>Contraseña</label>
-    <input type="password" class="form-control" name="password" placeholder="Contraseña">
-    <small class="form-text text-muted">Nunca compartas tus datos con alguien mas.</small>
+      <div class="acceso">Acceder</div>
+  <div class="containerForm">
+      <form action="/api/users/login" method="post" style="padding: 1.5rem;" class="border border-primary-subtle border-2 rounded-4 contFormLogin">
+    <div class="form-group">
+      <label class="label">Correo electronico</label>
+      <input type="email" class="form-control" name="email" placeholder="Ingresar Email">
+    </div>
+    <div class="form-group">
+      <label class="label">Contraseña</label>
+      <input type="password" class="form-control" name="password" placeholder="Contraseña">
+      <small class="form-text label">Nunca compartas tus datos con alguien mas.</small>
+    </div>
+	  	<button type='submit' class='btn btn-primary col-12' style="margin-top: 1rem;">Ingresar</button>
+    <div>
+      <a href='/api/session/github' type='submit' class='btn btn-primary col-12' 
+      style='background: #303749; color: #fff; margin-top: 10px'>
+      Ingresar con GitHub</a>
+    </div>
+    <div>
+      <br>
+	  <div class="row">
+      <p class="col" style="color: rgb(3, 132, 253);">No tienes cuenta? Registrate</p>
+	    <p class="col" style="margin-left: 40px;"><a style="text-decoration: none; color: rgb(3, 132, 253);" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</p>
+	  </div>
+      <a href="/register" class="btn btn-success col-12">Registrarse</a>
+    </div>
+      </form>
   </div>
-		<button type='submit' class='btn btn-primary col-12' style="margin-top: 1rem;">Ingresar</button>
-  </div>
-  <div>
-    <a href='/api/session/github' type='submit' class='btn btn-primary col-12' 
-    style='background: #333; color: #fff; margin-top: 10px'>
-    Ingresar con GitHub</a>
-  </div>
-  <div>
-    <br>
-	<div class="row">
-    <p class="col" style="color: blue;">No tienes cuenta? Registrate</p>
-	<p class="col"><a style="text-decoration: none; color: blue;" href="/resetpassword">Olvidaste tu contraseña? Haz click aquí</p>
-	</div>
-    <a href="/register" class="btn btn-success col-12">Registrarse</a>
-  </div>
-    </form>
 </body>

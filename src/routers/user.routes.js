@@ -70,6 +70,7 @@ usersRouter.post('/logout', (req, res) => {
 
 usersRouter.post('/mail', async (req, res) => {
 	const { user } = req.session;
+	console.log(user);
 	const userEmail = user.email
 	try {
 		const userMail = await userService.getByEmail(userEmail)
@@ -91,13 +92,11 @@ usersRouter.post('/mail', async (req, res) => {
 			`
 		  };
 		  
-		  
 		  transporter.sendMail(mailOptions, (error, info) => {
 			if (error) {
 				logger.error(error);
 			}
-			logger.info(`Email sent: ` + info)});
-		  res.redirect('/emailsent');
+			logger.info(`Email sent: ` + info.messageId)});
 	} catch (error) {
 		res.status(500).json(error);
 }});

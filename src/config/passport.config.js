@@ -6,7 +6,6 @@ import { comparePassword, hashPassword } from '../utils/encript.js';
 import { cartService } from '../dao/dbManagers/cart.service.js';
 import config from './config.js';
 import moment from 'moment';
-import Swal from 'sweetalert2';
 
 const LocalStrategy = local.Strategy;
 const passportInit = () => {
