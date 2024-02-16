@@ -125,6 +125,10 @@ usersRouter.post('/resetemail/:token', async (req, res) => {
 	}
 });
 
+usersRouter.put('/updatephoto', async (req, res) => {
+	
+})
+
 usersRouter.delete('/autodelete', async (req, res) => {
 	try {
 		const inactiveUsers = await userService.getInactiveUsers();
@@ -206,5 +210,6 @@ usersRouter.post('/updaterol/:uid', async (req, res) => {
 		res.status(500).json({ error: "Cambio de rol fallido" });
 	};
 });
+
 
 export default usersRouter;

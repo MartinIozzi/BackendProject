@@ -442,6 +442,27 @@ footer {
   height: 10em;
 }
 
+.no-photo{
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  margin-top: 5em;
+}
+
+.cont-profile{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "area1 area2";
+}
+
+.area1{
+  grid-area: area1;
+}
+
+.area2{
+  grid-area: area2;
+}
 
 @media (min-width: 1920px) {
   .containerProds{
