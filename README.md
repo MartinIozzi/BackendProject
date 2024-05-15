@@ -7,10 +7,11 @@ The main ones are Express, Node.js, MongoDB, and Socket.io</p>
 <p>Having these as main ones, I have some extra tools that help me give a more realistic touch to my project, such as:
     <ul>
         <li>
-            Express (Session, Cookie Parser),
-            Bootstrap, JSONwebtoken,
-            Bcrypt,
-            Passport (and Local)
+            <p>Express (Session, Cookie Parser)</p>
+            <p>Bootstrap, JSONwebtoken</p>
+            <p>Socket.io</p>
+            <p>Bcrypt</p>
+            <p>Passport (and Local)</p>
         </li>
     </ul>
 
